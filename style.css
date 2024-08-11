@@ -1,0 +1,276 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+@font-face {
+  font-family: "smm";
+  src: url(./fonts/smm.woff) format("woff");
+}
+
+body {
+  font-size: 20px;
+  color: #383838;
+  padding-top: 50px;
+
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
+header {
+  background: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .35);
+}
+
+.logo {
+  transition: all .5s;
+  transform-origin: top left;
+}
+
+.logo:hover {
+  scale: 1.1;
+}
+
+.logo img {
+  height: 100%;
+  cursor: pointer;
+  -webkit-user-drag: none;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  justify-content: space-around;
+}
+
+.contents {
+  user-select: none;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.contents:hover {
+  scale: 1.2;
+  rotate: .01turn;
+  color: #febc00;
+}
+
+#toTop {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  background-color: #aaa;
+  opacity: .5;
+  color: #fff;
+  transition: all .3s;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#toTop:hover {
+  scale: 1.2;
+  opacity: .8;
+}
+
+#toTop img {
+  width: 80%;
+  margin: 0 auto;
+  transition: all .3s;
+  -webkit-user-drag: none;
+}
+
+#toTop:hover img {
+  scale: 1.3;
+  transform: rotateY(1turn);
+}
+
+.section {
+  display: none;
+  transition: all .2s;
+  position: absolute;
+  width: 100%;
+}
+
+h1 {
+  margin-top: 30px;
+  padding: .5rem;
+  color: #494949;
+  background: #fffaf4;
+  border-left: 8px solid #febc00;
+  margin-left: 10px;
+  display: inline-block;
+  padding-right: 60px;
+  padding-left: 18px;
+  font-size: 2.5rem;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .35);
+}
+
+.sentence {
+  margin-top: 30px;
+  margin-left: 30px;
+  max-width: calc(100% - 60px);
+}
+
+#tabs {
+  border-bottom: 5px solid #febc00;
+  margin: 30px auto;
+  height: 50px;
+  width: min(95%, 1000px);
+  display: flex;
+}
+
+.tab {
+  width: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #000;
+}
+
+.tab p {
+  transition: all .2s;
+}
+
+.tab:hover p {
+  scale: 1.15;
+  rotate: .01turn;
+}
+
+.tabContent {
+  transition: all .2s;
+  position: absolute;
+}
+
+.qContainer {
+  width: min(90%, 900px);
+  border: 2px solid #febc00;
+  border-radius: 30px;
+  margin: 20px auto 0 auto;
+  padding: 20px 30px 20px 30px;
+  background-color: #fffaf4;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .35);
+  transition: all .3s;
+}
+
+.qContainer:hover {
+  scale: 1.02;
+}
+
+.qNo {
+  vertical-align: middle;
+  font-family: smm;
+  font-size: .8rem;
+}
+
+.qTitle {
+  vertical-align: middle;
+  font-weight: bold;
+  margin-left: .8rem;
+  text-decoration: none;
+  color: #383838;
+  font-size: 1.2rem;
+}
+
+.qTitle:hover {
+  text-decoration: 2px underline #666;
+}
+
+.qDif {
+  display: block;
+}
+
+.qProblem {
+  display: block;
+  margin: 10px 0 15px 0;
+}
+
+.qImage {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.qMaker {
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.qMakerId {
+  text-decoration: none;
+  color: #4444ff;
+}
+
+.mediaRow {
+  width: min(90%, 900px);
+  display: flex;
+  margin: 5px auto;
+  justify-content: space-between;
+}
+
+.mediaContainer {
+  display: inline-block;
+  width: calc(100% / 3 - 2px);
+}
+
+.mediaNo {
+  display: block;
+  text-align: center;
+  font-family: smm;
+  font-size: .7rem;
+}
+
+.mediaImage {
+  width: 100%;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .35);
+}
+
+.mediaImage:hover {
+  scale: 1.04;
+  rotate: .005turn;
+}
