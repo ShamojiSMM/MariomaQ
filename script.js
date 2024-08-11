@@ -68,7 +68,7 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
   for await (const [i, q] of qList.entries()) {
     const container = document.createElement("div");
     container.id = `q${q.no}`;
-    container.className = "qContainer";
+    container.className = `qContainer${q.isMinQ ? " minQ" : ""}`;
     listContent.appendChild(container);
 
     if (i % 3 == 0) {
@@ -152,7 +152,7 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
     container.append(img, makerElm);
 
     const mediaContainer = document.createElement("div");
-    mediaContainer.className = "mediaContainer";
+    mediaContainer.className = `mediaContainer${q.isMinQ ? " mediaMinQ" : ""}`;
     mediaContent.lastChild.appendChild(mediaContainer);
 
     const mediaNo = document.createElement("span");
