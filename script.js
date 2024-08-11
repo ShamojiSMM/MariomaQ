@@ -79,95 +79,95 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
 
     const url = `https://publish.twitter.com/oembed?url=https://twitter.com/mariomaQ_OA/status/${q.link}&omit_script=true&hide_thread=true`;
 
-    await fetch(url).then(res => res.json()).then(result => {
-      const doc = result.html;
+    const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`);
+    const result = await res.text();
+    const doc = JSON.parse(result).html;
 
-      const dom = parser.parseFromString(doc, "text/html");
-      const docElement = dom.documentElement;
-      const block = docElement.children[1].firstChild;
+    const dom = parser.parseFromString(doc, "text/html");
+    const docElement = dom.documentElement;
+    const block = docElement.children[1].firstChild;
 
-      const date = block.lastChild.textContent;
-      const text = block.firstChild;
+    const date = block.lastChild.textContent;
+    const text = block.firstChild;
 
-      let [title, problem] = ["", ""];
-      let isProblem = false;
+    let [title, problem] = ["", ""];
+    let isProblem = false;
 
-      for (let node of Array.from(text.childNodes)) {
-        const textContent = node.textContent;
-        if (textContent == "") continue;
+    for (let node of Array.from(text.childNodes)) {
+      const textContent = node.textContent;
+      if (textContent == "") continue;
 
-        const preTitle = textContent.match(/〈.+〉/u) || [];
-        if (preTitle.length) {
-          title = preTitle[0].slice(2).slice(0, -2);
-          isProblem = true;
-          continue;
-        }
-
-        if (textContent[0] == "難") {
-          break;
-
-        } else if (isProblem) {
-          problem += textContent;
-          continue;
-        }
+      const preTitle = textContent.match(/〈.+〉/u) || [];
+      if (preTitle.length) {
+        title = preTitle[0].slice(2).slice(0, -2);
+        isProblem = true;
+        continue;
       }
 
-      problem = `${(problem[0] == "Q") ? "" : "Q. "}${problem}`;
+      if (textContent[0] == "難") {
+        break;
 
-      const noElm = document.createElement("span");
-      const titleElm = document.createElement("a");
-      const difElm = document.createElement("span");
-      const makerElm = document.createElement("span");
-      const makerIdElm = document.createElement("a");
-      const problemElm = document.createElement("span");
+      } else if (isProblem) {
+        problem += textContent;
+        continue;
+      }
+    }
 
-      noElm.className = "qNo";
-      titleElm.className = "qTitle";
-      difElm.className = "qDif";
-      makerElm.className = "qMaker";
-      makerIdElm.className = "qMakerId";
-      problemElm.className = "qProblem";
+    problem = `${(problem[0] == "Q") ? "" : "Q. "}${problem}`;
 
-      noElm.textContent = `No. ${q.no}`;
-      titleElm.text = `〈 ${title} 〉`;
-      titleElm.href = `https://twitter.com/mariomaQ_OA/status/${q.link}`;
+    const noElm = document.createElement("span");
+    const titleElm = document.createElement("a");
+    const difElm = document.createElement("span");
+    const makerElm = document.createElement("span");
+    const makerIdElm = document.createElement("a");
+    const problemElm = document.createElement("span");
 
-      difElm.textContent = `難易度: ${difTexts[q.dif]}`;
+    noElm.className = "qNo";
+    titleElm.className = "qTitle";
+    difElm.className = "qDif";
+    makerElm.className = "qMaker";
+    makerIdElm.className = "qMakerId";
+    problemElm.className = "qProblem";
 
-      const maker = makerNames[q.maker];
-      makerIdElm.text = `@${maker[0]}`;
-      makerIdElm.href = `https://twitter.com/i/user/${q.maker}`;
-      makerElm.append(`${maker[1]} (`, makerIdElm, ")");
+    noElm.textContent = `No. ${q.no}`;
+    titleElm.text = `〈 ${title} 〉`;
+    titleElm.href = `https://twitter.com/mariomaQ_OA/status/${q.link}`;
 
-      problemElm.textContent = problem;
+    difElm.textContent = `難易度: ${difTexts[q.dif]}`;
 
-      container.append(noElm, titleElm, difElm, problemElm);
+    const maker = makerNames[q.maker];
+    makerIdElm.text = `@${maker[0]}`;
+    makerIdElm.href = `https://twitter.com/i/user/${q.maker}`;
+    makerElm.append(`${maker[1]} (`, makerIdElm, ")");
 
-      const imgSrc = `https://pbs.twimg.com/media/${q.imgId}?format=jpg&name=orig`;
-      const img = document.createElement("img");
-      img.className = "qImage";
-      img.src = imgSrc;
+    problemElm.textContent = problem;
 
-      container.append(img, makerElm);
+    container.append(noElm, titleElm, difElm, problemElm);
 
-      const mediaContainer = document.createElement("div");
-      mediaContainer.className = "mediaContainer";
-      mediaContent.lastChild.appendChild(mediaContainer);
+    const imgSrc = `https://pbs.twimg.com/media/${q.imgId}?format=jpg&name=orig`;
+    const img = document.createElement("img");
+    img.className = "qImage";
+    img.src = imgSrc;
 
-      const mediaNo = document.createElement("span");
-      mediaNo.className = "mediaNo";
-      mediaNo.textContent = q.no;
+    container.append(img, makerElm);
 
-      const mediaImg = document.createElement("img");
-      mediaImg.className = "mediaImage";
-      mediaImg.src = imgSrc;
+    const mediaContainer = document.createElement("div");
+    mediaContainer.className = "mediaContainer";
+    mediaContent.lastChild.appendChild(mediaContainer);
 
-      mediaImg.addEventListener("click", () => {
-        tabs[0].click();
-        location.hash = `#${container.id}`;
-      });
+    const mediaNo = document.createElement("span");
+    mediaNo.className = "mediaNo";
+    mediaNo.textContent = q.no;
 
-      mediaContainer.append(mediaNo, mediaImg);
+    const mediaImg = document.createElement("img");
+    mediaImg.className = "mediaImage";
+    mediaImg.src = imgSrc;
+
+    mediaImg.addEventListener("click", () => {
+      tabs[0].click();
+      location.hash = `#${container.id}`;
     });
+
+    mediaContainer.append(mediaNo, mediaImg);
   }
 })();
