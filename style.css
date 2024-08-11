@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 html {
@@ -48,10 +49,6 @@ header {
   transform-origin: top left;
 }
 
-.logo:hover {
-  scale: 1.1;
-}
-
 .logo img {
   height: 100%;
   cursor: pointer;
@@ -68,7 +65,6 @@ ul {
 }
 
 .contents {
-  user-select: none;
   font-size: 1rem;
   text-decoration: none;
   color: #fff;
@@ -77,12 +73,7 @@ ul {
   height: 100%;
   transition: all .3s;
   cursor: pointer;
-}
-
-.contents:hover {
-  scale: 1.2;
-  rotate: .01turn;
-  color: #febc00;
+  user-select: none;
 }
 
 #toTop {
@@ -101,11 +92,7 @@ ul {
   display: flex;
   align-items: center;
   cursor: pointer;
-}
-
-#toTop:hover {
-  scale: 1.2;
-  opacity: .8;
+  user-select: none;
 }
 
 #toTop img {
@@ -113,11 +100,7 @@ ul {
   margin: 0 auto;
   transition: all .3s;
   -webkit-user-drag: none;
-}
-
-#toTop:hover img {
-  scale: 1.3;
-  transform: rotateY(1turn);
+  pointer-events: none;
 }
 
 .section {
@@ -164,15 +147,11 @@ h1 {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: #000;
+  user-select: none;
 }
 
 .tab p {
   transition: all .2s;
-}
-
-.tab:hover p {
-  scale: 1.15;
-  rotate: .01turn;
 }
 
 .tabContent {
@@ -191,27 +170,23 @@ h1 {
   transition: all .3s;
 }
 
-.qContainer:hover {
-  scale: 1.02;
+.minQ {
+  border-color: #ff6969;
+  background-color: #ffe6e6;
 }
 
 .qNo {
-  vertical-align: middle;
   font-family: smm;
-  font-size: .8rem;
+  font-size: .6rem;
 }
 
 .qTitle {
-  vertical-align: middle;
   font-weight: bold;
-  margin-left: .8rem;
+  margin-left: .4rem;
   text-decoration: none;
   color: #383838;
-  font-size: 1.2rem;
-}
-
-.qTitle:hover {
-  text-decoration: 2px underline #666;
+  font-size: 1.4rem;
+  display: inline-block;
 }
 
 .qDif {
@@ -263,14 +238,104 @@ h1 {
 
 .mediaImage {
   width: 100%;
-  display: inline-block;
+  display: block;
   border-radius: 10px;
   cursor: pointer;
   transition: all .2s;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .35);
 }
 
-.mediaImage:hover {
-  scale: 1.04;
-  rotate: .005turn;
+.mediaMinQ {
+  border: 3px solid #ff6969;
+  border-radius: 12.5px;
+  background-color: #ffe6e6;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .35);
+}
+
+.mediaMinQ .mediaNo {
+  font-weight: bold;
+}
+
+.mediaMinQ .mediaImage {
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  .contents:hover {
+    scale: 1.2;
+    rotate: .01turn;
+    color: #febc00;
+  }
+
+  .logo:hover {
+    scale: 1.1;
+  }
+
+  #toTop:hover {
+    scale: 1.2;
+    opacity: .8;
+  }
+
+  #toTop:hover img {
+    scale: 1.3;
+    transform: rotateY(1turn);
+  }
+
+  .qContainer:hover {
+    scale: 1.02;
+  }
+
+  .tab:hover p {
+    scale: 1.15;
+    rotate: .01turn;
+  }
+
+  .qTitle:hover {
+    text-decoration: 2px underline #666;
+  }
+
+  .mediaImage:hover {
+    scale: 1.04;
+    rotate: .005turn;
+  }
+}
+
+@media (hover: none) {
+  .contents:active {
+    scale: 1.2;
+    rotate: .01turn;
+    color: #febc00;
+  }
+
+  .logo:active {
+    scale: 1.1;
+  }
+
+  #toTop:active {
+    scale: 1.2;
+    opacity: .8;
+  }
+
+  #toTop:active img {
+    scale: 1.3;
+    transform: rotateY(1turn);
+  }
+
+  .qContainer:active {
+    scale: 1.02;
+  }
+
+  .tab:active p {
+    scale: 1.15;
+    rotate: .01turn;
+  }
+
+  .qTitle:active {
+    text-decoration: 2px underline #666;
+  }
+
+  .mediaImage:active {
+    scale: 1.04;
+    rotate: .005turn;
+  }
 }
