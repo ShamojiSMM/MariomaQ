@@ -805,7 +805,7 @@ const qList = [
   {
     no: 37,
     dif: 7,
-    isMinQ: true,
+    isMinQ: false,
     maker: "1290596975826440192",
     link: "1788154376064061656",
     imgId: "GM0VAMFbUAAV0qq",
@@ -816,7 +816,7 @@ const qList = [
   {
     no: 36,
     dif: 6,
-    isMinQ: true,
+    isMinQ: false,
     maker: "1290596975826440192",
     link: "1787795827702022627",
     imgId: "GM-G1DzbwAA95-Z",
@@ -827,7 +827,7 @@ const qList = [
   {
     no: 35,
     dif: 5,
-    isMinQ: true,
+    isMinQ: false,
     maker: "1446399683291607048",
     link: "1787430711986946284",
     imgId: "GM46wZha0AA8Wk9",
@@ -838,7 +838,7 @@ const qList = [
   {
     no: 34,
     dif: 4,
-    isMinQ: true,
+    isMinQ: false,
     maker: "1290596975826440192",
     link: "1787101627540988351",
     imgId: "GM0PdNGaYAA8Jwg",
@@ -849,7 +849,7 @@ const qList = [
   {
     no: 33,
     dif: 2,
-    isMinQ: true,
+    isMinQ: false,
     maker: "1644867518954360832",
     link: "1786709980407816614",
     imgId: "GMurQXXbMAE_sh2",
