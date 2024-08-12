@@ -1139,7 +1139,7 @@ const qList = [
     maker: "1617052485763616768",
     link: "1777282743103287500",
     imgId: "GKoU-aHbcAAD9qD",
-    minParts: 2,
+    minParts: 3,
     skin: "1",
     theme: "ground"
   },
@@ -1150,7 +1150,7 @@ const qList = [
     maker: "1617052485763616768",
     link: "1776920419242856480",
     imgId: "GKjjtCJb0AAsC2A",
-    minParts: 2,
+    minParts: 3,
     skin: "1",
     theme: "ground"
   },
