@@ -239,7 +239,7 @@ h1 {
 }
 
 .qImage {
-  width: 85%;
+  width: min(100%, 650px);
   margin: 0 auto;
   display: block;
   border-radius: 20px;
