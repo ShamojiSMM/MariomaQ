@@ -1,3 +1,13 @@
+function isNum(...values) {
+  if (!values.length) return false;
+  for (var value of values) {
+    if (value === 0) return true;
+    if (["", null, Infinity, true, false].includes(value) || isNaN(value)) return false;
+  }
+
+  return true;
+}
+
 const contents = Array.from(document.getElementById("contents").children);
 const sections = document.querySelectorAll(".section");
 const sectionNames = Array.from(sections).map(section => section.id);
@@ -57,6 +67,28 @@ tabs[0].click();
 
 document.getElementById("toTop").addEventListener("click", () => {
   window.scrollTo({ top: 0 });
+});
+
+function goNo(value) {
+  if (!isNum(value)) return;
+
+  const no = parseInt(value);
+  const id = `q${no}`;
+  const q = document.getElementById(id);
+
+  if (!q) return;
+  q.scrollIntoView(true);
+  q.click();
+}
+
+const inputNo = document.getElementById("inputNo");
+
+inputNo.addEventListener("keydown", event => {
+  if (event.key == "Enter") goNo(inputNo.value);
+});
+
+document.getElementById("buttonNo").addEventListener("click", () => {
+  goNo(inputNo.value);
 });
 
 const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★", "⭐️⭐️⭐️⭐️⭐️⭐️", "🌟🌟🌟🌟🌟🌟🌟", "🔥🔥🔥🔥🔥🔥🔥🔥"];
@@ -121,6 +153,8 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
     const makerElm = document.createElement("span");
     const makerIdElm = document.createElement("a");
     const problemElm = document.createElement("span");
+    const imgElm = document.createElement("img");
+    const minPartsElm = document.createElement("span");
 
     noElm.className = "qNo";
     titleElm.className = "qTitle";
@@ -128,6 +162,8 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
     makerElm.className = "qMaker";
     makerIdElm.className = "qMakerId";
     problemElm.className = "qProblem";
+    imgElm.className = "qImage";
+    minPartsElm.className = "qMinParts";
 
     noElm.textContent = `No. ${q.no}`;
     titleElm.text = `〈 ${title} 〉`;
@@ -142,14 +178,12 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
 
     problemElm.textContent = problem;
 
-    container.append(noElm, titleElm, difElm, problemElm);
-
     const imgSrc = `https://pbs.twimg.com/media/${q.imgId}?format=jpg&name=orig`;
-    const img = document.createElement("img");
-    img.className = "qImage";
-    img.src = imgSrc;
+    imgElm.src = imgSrc;
 
-    container.append(img, makerElm);
+    minPartsElm.textContent = `最小パーツ数: ${q.minParts}`;
+
+    container.append(noElm, titleElm, difElm, problemElm, imgElm, makerElm, minPartsElm);
 
     const mediaContainer = document.createElement("div");
     mediaContainer.className = `mediaContainer${q.isMinQ ? " mediaMinQ" : ""}`;
@@ -165,7 +199,7 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
 
     mediaImg.addEventListener("click", () => {
       tabs[0].click();
-      location.hash = `#${container.id}`;
+      container.scrollIntoView(true);
     });
 
     mediaContainer.append(mediaNo, mediaImg);
