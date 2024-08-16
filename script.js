@@ -1,9 +1,9 @@
 function isNum(...values) {
   if (!values.length) return false;
-  for (var value of values) {
+  values.forEach(value => {
     if (value === 0) return true;
     if (["", null, Infinity, true, false].includes(value) || isNaN(value)) return false;
-  }
+  });
 
   return true;
 }
@@ -41,9 +41,16 @@ contents.forEach((content, c) => {
   });
 });
 
+function goQ(element) {
+  element.scrollIntoView(true);
+  element.click();
+}
+
 const hash = location.hash.slice(1);
 let contentIndex = hash ? sectionNames.indexOf(hash) : 0;
-if (contentIndex == -1) contentIndex = 2;
+
+const isQHash = contentIndex == -1;
+if (isQHash) contentIndex = 2;
 changeDisplay(sections[contentIndex], true);
 
 const tabContents = document.querySelectorAll(".tabContent");
@@ -76,9 +83,7 @@ function goNo(value) {
   const id = `q${no}`;
   const q = document.getElementById(id);
 
-  if (!q) return;
-  q.scrollIntoView(true);
-  q.click();
+  if (q) goQ(q);
 }
 
 const inputNo = document.getElementById("inputNo");
@@ -101,6 +106,11 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
     const container = document.createElement("div");
     container.id = `q${q.no}`;
     container.className = `qContainer${q.isMinQ ? " minQ" : ""}`;
+
+    container.addEventListener("click", () => {
+      location.hash = `#q${q.no}`;
+    });
+
     listContent.appendChild(container);
 
     if (i % 3 == 0) {
@@ -199,9 +209,11 @@ const difTexts = ["☆☆☆☆☆", "★☆☆☆☆", "★★☆☆☆", "★�
 
     mediaImg.addEventListener("click", () => {
       tabs[0].click();
-      container.scrollIntoView(true);
+      goQ(container);
     });
 
     mediaContainer.append(mediaNo, mediaImg);
   }
+
+  if (isQHash) goQ(document.getElementById(hash));
 })();
