@@ -1205,7 +1205,7 @@ const qList = [
     maker: "1617052485763616768",
     link: "1776195580651327731",
     imgId: "GKZPRJ8b0AAKH5W",
-    minParts: 2,
+    minParts: 3,
     skin: "3",
     theme: "ground"
   },
