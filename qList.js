@@ -6,7 +6,7 @@ const qList = [
     maker: "171883435",
     link: "1825843669112598678",
     imgId: "GVazI8OaMAMsj2N",
-    minParts: 1,
+    minParts: 2,
     skin: "3d",
     theme: "ground"
   },
