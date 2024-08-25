@@ -1,5 +1,27 @@
 const qList = [
   {
+    no: 119,
+    dif: 6,
+    isMinQ: true,
+    maker: "1446399683291607048",
+    link: "1827292268166049860",
+    imgId: "GVg4WvHbwAEpQy2",
+    minParts: 3,
+    skin: "1",
+    theme: "ground"
+  },
+  {
+    no: 118,
+    dif: 4,
+    isMinQ: false,
+    maker: "1469489236110110720",
+    link: "1826567489985098215",
+    imgId: "GVgthmraEAEHTFc",
+    minParts: 2,
+    skin: "1",
+    theme: "ground"
+  },
+  {
     no: 117,
     dif: 4,
     isMinQ: false,
@@ -1322,5 +1344,5 @@ const makerNames = {
   "1584062609959288832": ["peiloooc",       "悪行"],
   "73400089"           : ["nakajima_mg",    "ふみっきー君ch踏切の人🚧サブchゲーム実況"],
   "1791425056486432768": ["N_SMM2",         "N"],
-  "171883435"          : ["sampam303", "さんぱん"]
+  "171883435"          : ["sampam303",      "さんぱん"]
 };
