@@ -1,5 +1,16 @@
 const qList = [
   {
+    no: 124,
+    dif: 4,
+    isMinQ: false,
+    maker: "1644867518954360832",
+    link: "1830565624827031905",
+    imgId: "GWd5u6DbkAE_6jL",
+    minParts: 3,
+    skin: "1",
+    theme: "ground"
+  },
+  {
     no: 123,
     dif: 6,
     isMinQ: true,
