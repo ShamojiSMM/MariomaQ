@@ -74,6 +74,7 @@ tabs[0].click();
 
 document.getElementById("toTop").addEventListener("click", () => {
   window.scrollTo({ top: 0 });
+  if (!sectionNames.includes(location.hash.slice(1))) location.hash = "#qList";
 });
 
 function goNo(value) {
