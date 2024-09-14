@@ -1,5 +1,27 @@
 const qList = [
   {
+    no: 129,
+    dif: 6,
+    isMinQ: true,
+    maker: "1617052485763616768",
+    link: "1834915714253127985",
+    imgId: "GXbuHdPacAA--II",
+    minParts: 3,
+    skin: "1",
+    theme: "ground"
+  },
+  {
+    no: 128,
+    dif: 1,
+    isMinQ: false,
+    maker: "94548427",
+    link: "1833823972867404202",
+    imgId: "GXMNLtpakAAa4V9",
+    minParts: undefined,
+    skin: "1",
+    theme: "snow"
+  },
+  {
     no: 127,
     dif: 6,
     isMinQ: true,
@@ -930,7 +952,7 @@ const qList = [
     maker: "1617052485763616768",
     link: "1790692165020217512",
     imgId: "GNnRCFybIAAlpdt",
-    minParts: 1,
+    minParts: undefined,
     skin: "1",
     theme: "ground"
   },
@@ -941,7 +963,7 @@ const qList = [
     maker: "1617052485763616768",
     link: "1790331174914830451",
     imgId: "GNiIttcaAAAbwlk",
-    minParts: 1,
+    minParts: undefined,
     skin: "1",
     theme: "ground"
   },
